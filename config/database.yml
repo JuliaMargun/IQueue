@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: IQueue_development
+  username: iqueue
+  password: 'pass'
+
+test:
+  <<: *default
+  database: IQueue_test
+  username: iqueue
+  password: 'pass'
+
+production:
+  <<: *default
+  database: IQueue_production
+  username: IQueue
+  password: <%= ENV['IQUEUE_DATABASE_PASSWORD'] %>
